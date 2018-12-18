@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Roman_Numberal_Converter
+namespace RomanNumeralConverter
 {
-    class Program
+    public class Program
     {
         public const int I = 1;
         public const int V = 5;
@@ -19,7 +19,7 @@ namespace Roman_Numberal_Converter
         public static List<int> Result;
         public static int Answer;
 
-        static void Main(string[] args)
+        public static void Main()
         {
             PromptUserForValue();
             var validator = "^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
