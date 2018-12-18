@@ -22,10 +22,19 @@ namespace Roman_Numberal_Converter
         static void Main(string[] args)
         {
             PromptUserForValue();
-            ConvertNumeralToNumberConverter(UsersInput);
-            PerformCalculation();
-            Console.WriteLine(Answer);
-            Console.ReadLine();
+            var validator = "^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+            Match isValid = Regex.Match(UsersInput, validator);
+          
+            if (isValid.Success)
+            {
+                ConvertNumeralToNumberConverter(UsersInput);
+                PerformCalculation();
+                Console.WriteLine(Answer);
+            }
+            else
+            {
+                Console.WriteLine("Nice try ;). That's doesn't look like a roman numeral.");
+            }
         }
 
         private static void PromptUserForValue()
@@ -69,7 +78,6 @@ namespace Roman_Numberal_Converter
                         break;
                 }
             }
-            //Console.WriteLine("Nice try ;). That's doesn't look like a roman numeral to me.");
         }
         private static void PerformCalculation()
         {
@@ -84,7 +92,6 @@ namespace Roman_Numberal_Converter
                 {
                     var difference  = currentValue - previousValue;
                     Answer = Answer + difference - previousValue;
-
                 }
                 else
                 {
